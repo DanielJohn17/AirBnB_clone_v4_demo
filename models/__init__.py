@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 from os import getenv
+from dotenv import load_dotenv
 
+
+load_dotenv() # Load the .env file
 
 storage_t = getenv("HBNB_TYPE_STORAGE")
 

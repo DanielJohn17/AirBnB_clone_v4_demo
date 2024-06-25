@@ -4,6 +4,7 @@ from flask import Flask, jsonify
 from api.v1.views import app_view
 from models import storage
 from flask_cors import CORS
+from dotenv import load_dotenv
 
 
 app = Flask(__name__)
@@ -20,10 +21,12 @@ def error(exception):
     return jsonify({"error": "Not found"}), 404
 
 if __name__ == "__main__":
+
+    load_dotenv() # load the .env file
     HBNB_API_HOST = getenv("HBNB_API_HOST")
     HBNB_API_PORT = getenv("HBNB_API_PORT")
 
     host = '0.0.0.0' if not HBNB_API_HOST else HBNB_API_HOST
-    port = 5000 if not HBNB_API_PORT else HBNB_API_PORT
+    port = 5002 if not HBNB_API_PORT else HBNB_API_PORT
 
-    app.run(host=host, port=port, threaded=True, debug=True)
+    app.run(host=host, port=port, threaded=True)

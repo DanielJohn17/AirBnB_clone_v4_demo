@@ -9,6 +9,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
+from dotenv import load_dotenv
 
 classes_dict = {"User": User,
                 "State": State,
@@ -24,6 +25,8 @@ class DBStorage:
     __session = None
     
     def __init__(self):
+
+        load_dotenv() # load the .env file
         
         HBNB_MYSQL_USER = getenv('HBNB_MYSQL_USER')
         HBNB_MYSQL_PWD = getenv('HBNB_MYSQL_PWD')
